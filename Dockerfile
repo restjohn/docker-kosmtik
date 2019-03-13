@@ -60,4 +60,4 @@ WORKDIR /opt/project
 
 EXPOSE 6789
 
-CMD ["kosmtik", "serve"]
+ENTRYPOINT ["kosmtik", "serve"]
