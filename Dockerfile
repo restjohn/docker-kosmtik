@@ -20,8 +20,18 @@ ENV USER_ID 0
 ENV NODE_PATH /usr/lib/node_modules/
 WORKDIR /opt/kosmtik
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends curl ca-certificates gpg \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        curl \
+        ca-certificates \
+        gpg \
+        fonts-hanazono \
+        fonts-noto-cjk \
+        fonts-noto-hinted \
+        fonts-noto-unhinted \
+        ttf-unifont \
+        fontconfig \
+    && curl -sL -o /usr/share/fonts/truetype/noto/NotoEmoji-Regular.ttf https://github.com/googlei18n/noto-emoji/raw/master/fonts/NotoEmoji-Regular.ttf \
+    && fc-cache -rv \
     && curl -sL https://deb.nodesource.com/setup_6.x | bash - \
     && apt-get install -y nodejs \
     && curl -sL https://github.com/kosmtik/kosmtik/archive/master.tar.gz | tar xz --strip-components=1 \
